@@ -8,6 +8,13 @@
 <body>
     <h1>Registration</h1>
     <form method="POST" action="{{ url_for('registration') }}">
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    {{ message }}
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
         {{ form.csrf_token }}
         {% for field in form if field.name != 'csrf_token' %}
         <p>

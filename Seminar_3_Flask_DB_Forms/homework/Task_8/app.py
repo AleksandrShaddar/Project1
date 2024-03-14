@@ -1,9 +1,11 @@
+# Задача 8.
 # Создать форму для регистрации пользователей на сайте.
 # Форма должна содержать поля "Имя", "Фамилия", "Email",
 # "Пароль" и кнопку "Зарегистрироваться".
 # При отправке формы данные должны сохраняться в базе
 # данных, а пароль должен быть зашифрован.
 
+# Задача 7.
 # Создайте форму регистрации пользователей в приложении Flask. Форма должна
 # содержать поля: имя, фамилия, email, пароль и подтверждение пароля. При отправке
 # формы данные должны валидироваться на следующие условия:
@@ -18,7 +20,7 @@
 # сообщение об успешной регистрации.
 
 
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, request, redirect, flash
 from models import db, Users
 from flask_wtf.csrf import CSRFProtect
 from forms import RegistrationForm
@@ -41,13 +43,14 @@ def init_db():
 @app.route('/', methods=['GET', 'POST'])
 def registration():
     form = RegistrationForm()
-    if request.method == 'POST' and form.validate():
+    if request.method == 'POST' and form.validate() and form.validate_password(form.password.data):
         user = Users(name=form.name.data,
                      sername=form.sername.data,
-                     email=form.sername.data,
+                     email=form.email.data,
                      password=generate_password_hash(form.password.data))
         db.session.add(user)
         db.session.commit()
+        flash('Регистрация прошла успешно!')
         return redirect('/')
     return render_template('index.html', form=form)
 
