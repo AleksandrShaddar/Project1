@@ -56,13 +56,13 @@ async def get_users(request: Request):
 
 
 @app.post('/user/')
-async def creat_task(user: User):
+async def creat_user(user: User):
     users.append(user)
     return user
 
 
 @app.put('/user/{id_}')
-async def update_task(id_: int, user: User):
+async def update_user(id_: int, user: User):
     for i in range(len(users)):
         if users[i].id_ == id_:
             users[i] = user
@@ -70,7 +70,7 @@ async def update_task(id_: int, user: User):
 
 
 @app.delete('/user/{id_}')
-async def delete_task(id_: int):
+async def delete_user(id_: int):
     for us in users:
         if us.id_ == id_:
             users.remove(us)
