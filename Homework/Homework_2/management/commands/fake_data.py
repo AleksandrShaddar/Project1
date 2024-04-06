@@ -17,6 +17,6 @@ class Command(BaseCommand):
             client.save()
             product = Product(name=f'Product{i}', description=f'Description{i}', price=(random() + randint(10, 1000)), value=randint(1, 25), date_add=date.today())
             product.save()
-            for j in range(1, count + 1):
-                order = Order(customer=client, total_price=f'{product.price}')
-                order.save()
+            # for j in range(1, count + 1):
+            #     order = Order(customer=client, total_price=f'{product.price}')
+            #     order.save()

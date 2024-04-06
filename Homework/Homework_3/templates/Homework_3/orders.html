@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Заказы</title>
+</head>
+<body>
+    <h1>Информация по заказам клиента: {{ user.name }}</h1>
+    <h3>Сделано заказов: {{ value }} шт.</h3>
+    {% for key, value in final.items %}
+        <ul>Состав заказа (id={{ key }}):</ul>
+            {% for val in value %}
+                <li>{{ val }}</li>
+            {% endfor %}
+    {% endfor %}
+</body>
+</html>

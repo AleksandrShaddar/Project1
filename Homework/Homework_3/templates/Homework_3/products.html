@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Продукты</title>
+</head>
+<body>
+    <h1>Информация по товарам клиента: {{ user.name }}</h1>
+    <h3>За последние {{ date }} день/дней заказано уникальных товаров: {{ value }} шт.</h3>
+    {% for item in final %}
+        <li>{{ item }}</li>
+    {% endfor %}
+</body>
+</html>
