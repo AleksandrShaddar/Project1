@@ -20,6 +20,8 @@ class Product(models.Model):
     price = models.DecimalField(max_digits=8, decimal_places=2)
     value = models.IntegerField()
     date_add = models.DateField()
+    data = models.FileField(upload_to='Homework_4', blank=True, null=True)
+    # data = models.CharField(max_length=250, blank=True, null=True)
 
 
 class Order(models.Model):
