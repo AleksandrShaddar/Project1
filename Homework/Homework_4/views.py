@@ -1,4 +1,3 @@
-from django.core.files.storage import FileSystemStorage
 from django.shortcuts import render
 from Homework_2.models import Product
 from Homework_4.forms import ProductForm
@@ -18,12 +17,10 @@ def update_product(request):
             value = form.cleaned_data['value']
             date_add = form.cleaned_data['date_add']
             image = form.cleaned_data['image']
-            # fs = FileSystemStorage()
             product = Product.objects.filter(id=id_).first()
             if product is not None:
                 if image is not None:
                     product.data = image
-                    # fs.save(image.name, image)
                 product.name = name
                 product.description = description
                 product.price = price
