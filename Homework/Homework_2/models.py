@@ -3,6 +3,7 @@ import datetime
 
 # Create your models here.
 
+
 class Client(models.Model):
     name = models.CharField(max_length=100)
     email = models.EmailField()
@@ -11,7 +12,7 @@ class Client(models.Model):
     registration_date = models.DateField()
 
     def __str__(self):
-        return f'Clientname: {self.name}, phone: {self.phone_number}, adress: {self.adress}'
+        return f'Client_name: {self.name}, phone: {self.phone_number}, adress: {self.adress}'
 
 
 class Product(models.Model):
@@ -21,7 +22,9 @@ class Product(models.Model):
     value = models.IntegerField()
     date_add = models.DateField()
     data = models.FileField(upload_to='Homework_4', blank=True, null=True)
-    # data = models.CharField(max_length=250, blank=True, null=True)
+
+    def __str__(self):
+        return self.name
 
 
 class Order(models.Model):
