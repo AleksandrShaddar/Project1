@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block title %}
+    <title>Обувь</title>
+{% endblock %}
+{% block context %}
+    <p>Список обуви</p>
+    {% for shoe in shoes %}
+        <ul> {{shoe.name}}
+            <li>Размер {{shoe.size}}</li>
+            <li>Цена {{shoe.price}}</li>
+        </ul>
+        <p></p>
+    {% endfor %}
+{% endblock %}

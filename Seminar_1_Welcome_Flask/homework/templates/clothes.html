@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block title %}
+    <title>Одежда</title>
+{% endblock %}
+{% block context %}
+    <p>Список одежды</p>
+    {% for cloth in clothes %}
+        <ul> {{cloth.name}}
+            <li>Размер {{cloth.size}}</li>
+            <li>Цена {{cloth.price}}</li>
+        </ul>
+        <p></p>
+    {% endfor %}
+{% endblock %}
